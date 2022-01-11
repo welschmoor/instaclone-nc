@@ -20,11 +20,15 @@
   },
   "homepage": "https://github.com/welschmoor/instaclone-nc#readme",
   "dependencies": {
+    "@graphql-tools/load-files": "^6.5.3",
+    "@graphql-tools/merge": "^8.2.1",
     "@prisma/client": "^3.7.0",
     "apollo-server": "^3.6.1",
     "apollo-server-core": "^3.6.1",
     "babel-cli": "^6.26.0",
-    "graphql": "^16.2.0"
+    "dotenv": "^10.0.0",
+    "graphql": "^16.2.0",
+    "graphql-tools": "^8.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
