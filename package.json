@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "apollo": "nodemon --exec ./node_modules/.bin/babel-node server"
+    "apollo": "nodemon --exec ./node_modules/.bin/babel-node server",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,5 @@
     "@babel/preset-env": "^7.16.7",
     "nodemon": "^2.0.15",
     "prisma": "^3.7.0"
-  },
-  "type": "module"
+  }
 }
