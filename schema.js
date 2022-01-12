@@ -7,7 +7,7 @@ const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.js`)
 const typeDefs = mergeTypeDefs(loadedTypes)
 
 // look at files which end in either queires or mutations.js in all folders:
-const loadedResolvers = loadFilesSync(`${__dirname}/**/*.{queries,mutations}.js`)
+const loadedResolvers = loadFilesSync(`${__dirname}/**/*.{queries,mutations,resolvers}.js`)
 const resolvers = mergeResolvers(loadedResolvers)
 
 const schema = makeExecutableSchema({
