@@ -2,17 +2,17 @@ const client = require('../../client.js')
 const bcrypt = require('bcrypt')
 const fs = require('fs')
 
-console.log(process.cwd())
 
 const editProfileResolvers = {
   Mutation: {
     editProfile: async (root, args, context) => {
-      console.log(context.currentUser)
+
       if (context.currentUser === null) {
         return { ok: false, error: '401: unauthorized' }
       }
 
       const { firstName, lastName, username, email, password, bio, avatar } = args
+      console.log("avatar", avatar)
       const { filename, createReadStream } = await avatar
       const readStream = createReadStream()
       const writeStream = fs.createWriteStream(process.cwd() + '/uploads/' + filename)
