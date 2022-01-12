@@ -12,11 +12,17 @@ const editProfileResolvers = {
       }
 
       const { firstName, lastName, username, email, password, bio, avatar } = args
-      console.log("avatar", avatar)
-      const { filename, createReadStream } = await avatar
-      const readStream = createReadStream()
-      const writeStream = fs.createWriteStream(process.cwd() + '/uploads/' + filename)
-      readStream.pipe(writeStream)
+      let avatarURL = ''
+      if (avatar) {
+        const { filename, createReadStream } = await avatar
+        // create new name for file to be saved in db (to avoid duplicates overwriting files of equal names)
+        const newFileName = `${currentUser.id}-${Date.now()}-${filename}`
+        const readStream = createReadStream()
+        const writeStream = fs.createWriteStream(process.cwd() + '/uploads/' + newFileName)
+        readStream.pipe(writeStream)
+        avatarURL = `http://localhost:4002/static/${newFileName}`
+      }
+
 
 
       try {
@@ -28,7 +34,10 @@ const editProfileResolvers = {
 
         const user = await client.user.update({
           where: { id: context.currentUser.id },
-          data: { firstName, password: hashedPassword ? hashedPassword : undefined, bio }
+          data: {
+            firstName, password: hashedPassword ? hashedPassword : undefined,
+            bio, lastName, email, avatar: avatarURL ? avatarURL : undefined,
+          }
         })
 
         return { ok: true }
