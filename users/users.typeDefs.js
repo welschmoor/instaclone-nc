@@ -2,6 +2,9 @@
 const { gql } = require("apollo-server")
 
 const userQueries = gql`
+
+  scalar Upload
+  
   type User {
     id:        Int!    
     firstName: String!

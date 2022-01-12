@@ -15,4 +15,9 @@ const schema = makeExecutableSchema({
   resolvers
 })
 
-module.exports = schema
+const typeDefsAndResolvers = {
+  typeDefs,
+  resolvers
+}
+
+module.exports = typeDefsAndResolvers

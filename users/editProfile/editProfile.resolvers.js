@@ -4,12 +4,14 @@ const bcrypt = require('bcrypt')
 const editProfileResolvers = {
   Mutation: {
     editProfile: async (root, args, context) => {
+      console.log(context.currentUser)
       if (context.currentUser === null) {
         return { ok: false, error: '401: unauthorized' }
       }
-
+      
+      const { firstName, lastName, username, email, password, bio, avatar } = args
+      console.log("avatar", avatar )
       try {
-        const { firstName, lastName, username, email, password } = args
 
         let hashedPassword
         if (password) {
@@ -18,7 +20,7 @@ const editProfileResolvers = {
 
         const user = await client.user.update({
           where: { id: context.currentUser.id },
-          data: { firstName, password: hashedPassword ? hashedPassword : undefined }
+          data: { firstName, password: hashedPassword ? hashedPassword : undefined, bio }
         })
 
         return { ok: true }
