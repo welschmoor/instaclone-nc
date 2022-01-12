@@ -1,5 +1,5 @@
 
-const { gql } = require("apollo-server")
+const { gql } = require("apollo-server-express");
 
 const seeProfileQueries = gql`
   type Query {

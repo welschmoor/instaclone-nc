@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "apollo": "nodemon --exec ./node_modules/.bin/babel-node server",
+    "apollo": "nodemon --exec ./node_modules/.bin/babel-node server --delay 2s",
     "migrate": "npx prisma migrate dev",
     "studio": "npx prisma studio"
   },
@@ -25,6 +25,7 @@
     "@prisma/client": "^3.7.0",
     "apollo-server": "^3.6.1",
     "apollo-server-core": "^3.6.1",
+    "apollo-server-express": "^3.6.1",
     "babel-cli": "^6.26.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",

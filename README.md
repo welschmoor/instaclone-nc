@@ -1,1 +1,1 @@
-# Instagram Clone
+# Instagram Clone - backend on GraphQL
