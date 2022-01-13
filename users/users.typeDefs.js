@@ -13,8 +13,12 @@ const userQueries = gql`
     email:     String!
     bio:       String
     avatar:    String
-    following: [User!]!
-    followers: [User!]!
+    following: [User]
+    followers: [User]
+    totalFollowing: Int!
+    totalFollowers: Int!
+    isFollowing: Boolean! #shows if we follow that user
+    isMe: Boolean! #shows if profile we are looking at is me
 
     createdAt: String!
     updatedAt: String!

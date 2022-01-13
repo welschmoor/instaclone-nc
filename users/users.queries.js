@@ -3,7 +3,7 @@ const { GraphQLUpload } = require('graphql-upload')
 
 const resolverQuery = {
   Query: {
-    allUsers: async () => await client.user.findMany(),
+    allUsers: async () => await client.user.findMany({ include: { following: true, followers: true } }),
   },
 
   Upload: GraphQLUpload,

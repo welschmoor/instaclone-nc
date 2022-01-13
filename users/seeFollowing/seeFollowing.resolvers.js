@@ -12,7 +12,7 @@ const seeFollowingResolvers = {
             take: take, skip: cursor ? 1 : 0,
             cursor: cursor ? { id: cursor } : undefined,
           })
-        console.log("following", following)
+        
         return { ok: true, following }
       }
       catch (error) {
