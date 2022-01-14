@@ -26,7 +26,7 @@ const loginResolvers = {
           process.env.SECRET,
           { expiresIn: "2 days" }
         )
-        console.log("token", token)
+        // console.log("token", token)
         return { ok: true, token: token }
 
       } catch (error) {

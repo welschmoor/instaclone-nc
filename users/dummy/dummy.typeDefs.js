@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server-express")
 
-const dummyUserUserQuery = gql`
+const dummyQuery = gql`
   type Dummy {
     ok: Boolean!
   }
@@ -10,4 +10,4 @@ const dummyUserUserQuery = gql`
   }
 `
 
-module.exports = dummyUserUserQuery
+module.exports = dummyQuery

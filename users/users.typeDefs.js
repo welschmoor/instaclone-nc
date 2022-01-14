@@ -15,6 +15,7 @@ const userQueries = gql`
     avatar:    String
     following: [User]
     followers: [User]
+    photos:    [Photo]
     totalFollowing: Int!
     totalFollowers: Int!
     isFollowing: Boolean! #shows if we follow that user

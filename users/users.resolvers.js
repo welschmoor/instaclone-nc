@@ -29,6 +29,10 @@ const userResolvers = {
         },
       })
       return Boolean(followingOneOrZero)
+    },
+    photos: async ({ id }, { page }) => {
+      // find user and get his photos
+      return await client.user.findUnique({ where: { id } }).photos()
     }
   }
 }

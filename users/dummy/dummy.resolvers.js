@@ -1,11 +1,11 @@
 const client = require('../../client.js')
 
 
-const dummyUserResolvers = {
+const dummyResolvers = {
   Mutation: {
     kek: () => "kek"
   }
 
 }
 
-module.exports = dummyUserResolvers 
+module.exports = dummyResolvers 
