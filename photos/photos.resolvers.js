@@ -5,11 +5,14 @@ const photosResolvers = {
     dummyR: () => "hello"
   },
   Photo: {
+
     user: async (root, args, context) => {
       // wee look at the userId of which is saved in photo that is being requested
       // and we then find the user in user db to retrieve username or whatever
       return await client.user.findUnique({ where: { id: root.userId } })
     },
+
+
     hashtags: async (root, args, context) => {
       // we use photo id root.id to find hashtags
       return await client.hashtag.findMany({
@@ -20,12 +23,34 @@ const photosResolvers = {
         }
       })
     },
+
+
     likes: async (root, args) => {
       return await client.like.count({
         where: {
           photoId: root.id
         }
       })
+    },
+
+
+    // how many commens:
+    comments: async (root, args) => {
+      return await client.comment.count({
+        where: { photoId: root.id }
+      })
+    },
+
+
+    isMine: async (root, _, context) => {
+      /* CHECK LOGIN */  if (!currentUser || currentUser === null) {
+        return false
+      }
+
+      if (context.currentUser.id === root.userId) {
+        return true
+      }
+      return false
     }
   },
 

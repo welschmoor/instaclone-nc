@@ -4,7 +4,7 @@ const client = require('../../client.js')
 const createCommentResolvers = {
   Mutation: {
     createComment: async (root, { photoId, payload }, { currentUser }) => {
-      console.log("createComment:::")
+
       if (!currentUser || currentUser === null) {
         return { ok: false, error: "401: not logged in" }
       }
@@ -38,13 +38,8 @@ const createCommentResolvers = {
         console.log("error:::", error)
         return { ok: false, error: error }
       }
-
-
-
-
     }
   }
-
 }
 
 module.exports = createCommentResolvers 

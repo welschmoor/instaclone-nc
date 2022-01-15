@@ -11,7 +11,7 @@ const photosTypeDefs = gql`
     hashtags: [Hashtag]
     likes: Int!
     isMine:  Boolean!
-    
+    comments: Int!  #how many
     createdAt: String!
     updatedAt: String!
   }

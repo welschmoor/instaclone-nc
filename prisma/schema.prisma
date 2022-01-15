@@ -24,9 +24,9 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  photos  Photo[]
-  Like    Like[]
-  Comment Comment[]
+  photos   Photo[]
+  likes    Like[]
+  comments Comment[]
 }
 
 model Photo {
@@ -39,8 +39,8 @@ model Photo {
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  Like      Like[]
-  Comment   Comment[]
+  likes     Like[]
+  comments  Comment[]
 }
 
 model Hashtag {
