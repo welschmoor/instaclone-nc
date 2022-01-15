@@ -11,7 +11,7 @@ const uploadPhotoResolvers = {
       try {
         let hashtagArrObj = undefined;
         if (caption) {
-          const hashtagArr = caption.match(/#[\w]+/g)
+          const hashtagArr = caption.match(/#[\w]+/g) || []
           hashtagArrObj = hashtagArr.map(hashtag => ({ where: { hashtag }, create: { hashtag } }))
         }
 

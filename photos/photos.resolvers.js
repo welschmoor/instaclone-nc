@@ -19,8 +19,17 @@ const photosResolvers = {
           }
         }
       })
+    },
+    likes: async (root, args) => {
+      return await client.like.count({
+        where: {
+          photoId: root.id
+        }
+      })
     }
   },
+
+
   Hashtag: {
     totalPhotos: async (root, args) => {
       console.log(root)
