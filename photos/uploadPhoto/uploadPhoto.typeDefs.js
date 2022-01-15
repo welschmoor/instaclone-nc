@@ -4,11 +4,11 @@ const uploadPhotoQuery = gql`
   type UploadFileResult {
     ok: Boolean!
     error: String
-    photo: Photo
+    photoUrl: String
   }
 
   type Mutation {
-    uploadPhoto(file: String!, caption: String): UploadFileResult!
+    uploadPhoto(file: Upload!, caption: String): UploadFileResult!
   }
 `
 

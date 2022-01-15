@@ -1,4 +1,5 @@
-const client = require('../../client.js')
+const client = require('../../client.js');
+const uploadToS3 = require('../../shared/shared.utils.js');
 
 const uploadPhotoResolvers = {
   Mutation: {
@@ -15,10 +16,11 @@ const uploadPhotoResolvers = {
           hashtagArrObj = hashtagArr.map(hashtag => ({ where: { hashtag }, create: { hashtag } }))
         }
 
+        const fileURL = await uploadToS3(file, currentUser.id, "uploads")
         const photo = await client.photo.create({
           data: {
-            file,
-            caption,
+            file: fileURL,
+            caption: caption,
             user: {
               connect: {
                 id: currentUser.id,
@@ -27,7 +29,7 @@ const uploadPhotoResolvers = {
             hashtags: hashtagArrObj && { connectOrCreate: hashtagArrObj }
           }
         })
-        return { ok: true, photo }
+        return { ok: true, photoUrl: photo.file }
       }
       catch (error) {
         return { ok: false, error }

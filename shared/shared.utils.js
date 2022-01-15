@@ -11,10 +11,10 @@ AWS.config.update({
 })
 
 
-const uploadToS3 = async (file, userId) => {
+const uploadToS3 = async (file, userId, folderName) => {
   const { filename, createReadStream } = await file
   const readStream = createReadStream()
-  const objectName = `${userId}-${Date.now()}-${filename}`
+  const objectName = `${folderName}/${userId}-${Date.now()}-${filename}`
 
 
   const uploadedFile = await new AWS.S3().upload({
@@ -25,7 +25,6 @@ const uploadToS3 = async (file, userId) => {
     Body: readStream, // this is the stream
   }).promise()
 
-  console.log(uploadedFile)
   return uploadedFile.Location
 }
 

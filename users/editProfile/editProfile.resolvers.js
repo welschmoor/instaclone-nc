@@ -14,7 +14,7 @@ const editProfileResolvers = {
       const { firstName, lastName, username, email, password, bio, avatar } = args
       let avatarURL = ''
       if (avatar) {
-        avatarURL = await uploadToS3(avatar, context.currentUser.id)
+        avatarURL = await uploadToS3(avatar, context.currentUser.id, "avatars")
 
         // const { filename, createReadStream } = await avatar
         // // create new name for file to be saved in db (to avoid duplicates overwriting files of equal names)
