@@ -8,10 +8,15 @@ const roomUpdatesResolvers = {
       // the second parameter function returns true or false
 
       subscribe: async (root, args, context, info) => {
-        const room = await client.room.findUnique({ where: { id: args.id }, select: { id: true } })
+        const room = await client.room.findFirst({
+          where: { id: args.id, users: { some: { id: context.currentUser.id } } }, select: { id: true }
+        })
+
         if (!room) {
           throw new Error("This chat room is unaccessible to you")
         }
+        // the following happens after the user starts to listen
+        // here we can add another room check (room code above)
         return withFilter(
           () => pubsub.asyncIterator(NEW_MESSAGE),
           (payload, { id }) => {
