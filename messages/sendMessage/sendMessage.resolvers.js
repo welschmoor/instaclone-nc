@@ -1,4 +1,6 @@
-const client = require('../../client.js')
+const client = require('../../client.js');
+const NEW_MESSAGE = require('../../constants.js');
+const pubsub = require('../../pubsub.js');
 
 
 const sendMessageResolvers = {
@@ -31,7 +33,7 @@ const sendMessageResolvers = {
             }
           }
         })
-        
+
       }//endIF userId
       else if (roomId) {
         room = await client.room.findUnique({
@@ -55,6 +57,8 @@ const sendMessageResolvers = {
           }
         }
       })
+      console.log("newMessage<>><>", newMessage)
+      pubsub.publish(NEW_MESSAGE, { roomUpdates: newMessage })
       return { ok: true }
     },
   }
