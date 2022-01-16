@@ -25,6 +25,7 @@ async function startServer() {
   const schema = makeExecutableSchema({ typeDefs, resolvers });
   const server = new ApolloServer({
     schema,
+
     plugins: [
       ApolloServerPluginLandingPageGraphQLPlayground({ settings: { "schema.polling.enable": false } }),
       ApolloServerPluginDrainHttpServer({ httpServer }),
@@ -55,8 +56,17 @@ async function startServer() {
   server.applyMiddleware({ app })
 
   const subscriptionServer = SubscriptionServer.create(
-    { schema, execute, subscribe },
-    { server: httpServer, path: server.graphqlPath }
+    {
+      schema, execute, subscribe,
+      onConnect: async ({ token }) => {
+        if (!token) {
+          throw new Error("401 unauthorized, can't listen to sub")
+        }
+        const currentUser = await getUser(token)
+        return {currentUser}
+      }
+    },
+    { server: httpServer, path: server.graphqlPath },
   );
 
 
