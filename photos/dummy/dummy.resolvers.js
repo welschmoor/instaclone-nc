@@ -2,7 +2,7 @@ const client = require('../../client.js')
 
 
 const dummyResolvers = {
-  Mutation: {
+  Query_or_Mutation: {
     kek: () => "kek"
   }
 

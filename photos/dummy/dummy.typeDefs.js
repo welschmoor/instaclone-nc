@@ -5,7 +5,7 @@ const dummyQuery = gql`
     ok: Boolean!
   }
 
-  type Mutation {
+  type Query_or_Mutation {
     kek: String!
   }
 `

@@ -3,7 +3,7 @@ const { gql } = require("apollo-server-express")
 
 
 const sharedTypeDefs = gql`
-  type MutationResponse {
+  type MutationResult {
     ok: Boolean!
     error: String
   }
