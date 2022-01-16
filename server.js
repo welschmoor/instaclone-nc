@@ -62,9 +62,11 @@ async function startServer() {
         if (!token) {
           throw new Error("401 unauthorized, can't listen to sub")
         }
+        console.log(token)
         const currentUser = await getUser(token)
-        return {currentUser}
-      }
+        console.log("|||||", currentUser)
+        return { currentUser: currentUser }
+      },
     },
     { server: httpServer, path: server.graphqlPath },
   );
