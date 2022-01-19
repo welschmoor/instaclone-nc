@@ -7,7 +7,8 @@ const userQueries = gql`
   
   type User {
     id:        Int!    
-    firstName: String!
+    fullName:  String!
+    firstName: String
     lastName:  String
     username:  String!  
     email:     String!

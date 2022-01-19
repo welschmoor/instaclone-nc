@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const createAccountResolvers = {
   Mutation: {
     createAccount: async (root, args) => {
-      const { firstName, lastName, email, password, username, } = args
+      const { fullName, firstName, lastName, email, password, username, } = args
       try {
         // check if username already in DB
         const existingUser = await client.user.findFirst({ where: { OR: [{ username }, { email }] } })
@@ -16,7 +16,7 @@ const createAccountResolvers = {
         const hashedPassword = await bcrypt.hash(password, 10)
         // save and return user
         await client.user.create({
-          data: { firstName, lastName, email, username, password: hashedPassword }
+          data: { fullName, firstName, lastName, email, username, password: hashedPassword }
         })
         return { ok: true }
       } catch (error) {

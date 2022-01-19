@@ -9,6 +9,7 @@ const editProfileQueries = gql`
   
   type Mutation {
     editProfile(
+      fullName:  String
       firstName: String 
       lastName: String 
       username: String 

@@ -11,7 +11,8 @@ const createAccountQueries = gql`
 
   type Mutation {
     createAccount(    
-      firstName: String!
+      fullName:  String!
+      firstName: String
       lastName:  String
       username:  String!  
       email:     String!

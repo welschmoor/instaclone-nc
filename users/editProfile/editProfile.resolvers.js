@@ -11,7 +11,7 @@ const editProfileResolvers = {
         return { ok: false, error: '401: unauthorized' }
       }
 
-      const { firstName, lastName, username, email, password, bio, avatar } = args
+      const { fullName, firstName, lastName, username, email, password, bio, avatar } = args
       let avatarURL = ''
       if (avatar) {
         avatarURL = await uploadToS3(avatar, context.currentUser.id, "avatars")
@@ -37,7 +37,7 @@ const editProfileResolvers = {
         const user = await client.user.update({
           where: { id: context.currentUser.id },
           data: {
-            firstName, password: hashedPassword ? hashedPassword : undefined,
+            fullName, firstName, password: hashedPassword ? hashedPassword : undefined,
             bio, lastName, email, avatar: avatarURL ? avatarURL : undefined,
           }
         })
