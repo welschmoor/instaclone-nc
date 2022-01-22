@@ -4,13 +4,14 @@ const { gql } = require("apollo-server-express")
 const photosTypeDefs = gql`
   type Photo {
     id: Int!
-    name: String!
     user: User!
     file: String!
     caption: String
     hashtags: [Hashtag]
     likes: Int!
     isMine:  Boolean!
+    isLikedByMe: Boolean!
+
     comments: Int!  #how many
     createdAt: String!
     updatedAt: String!

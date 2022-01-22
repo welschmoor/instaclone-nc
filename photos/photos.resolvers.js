@@ -1,11 +1,13 @@
 
 
 const photosResolvers = {
+
   Query: {
     dummyR: () => "hello"
   },
-  Photo: {
 
+
+  Photo: {
     user: async (root, args, context) => {
       // wee look at the userId of which is saved in photo that is being requested
       // and we then find the user in user db to retrieve username or whatever
@@ -51,7 +53,30 @@ const photosResolvers = {
         return true
       }
       return false
-    }
+    },
+
+
+    isLikedByMe: async (root, args, { currentUser }) => {
+      /* CHECK LOGIN */  if (!currentUser || currentUser === null) {
+        return false
+      }
+
+      const likeInQ = await client.like.findUnique({
+        where: {
+          photoId_userId: {
+            photoId: root.id,
+            userId: currentUser.id,
+          }
+        },
+        select: { id: true }
+      })
+      
+      console.log("likeInQ", likeInQ)
+
+      if (likeInQ) return true;
+      return false;
+    },
+
   },
 
 
