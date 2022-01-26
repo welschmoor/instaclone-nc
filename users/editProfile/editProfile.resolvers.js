@@ -25,8 +25,6 @@ const editProfileResolvers = {
         // avatarURL = `http://localhost:4002/static/${newFileName}`
       }
 
-
-
       try {
 
         let hashedPassword
