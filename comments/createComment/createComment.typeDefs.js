@@ -4,6 +4,7 @@ const createCommentQuery = gql`
   type CreateCommentResult {
     ok: Boolean!
     error: String
+    commentId: Int
   }
 
   type Mutation {

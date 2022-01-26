@@ -12,7 +12,9 @@ const photosTypeDefs = gql`
     isMine:  Boolean!
     isLikedByMe: Boolean!
 
-    comments: Int!  #how many
+    commentsNumber: Int!  #how many
+    comments: [Comment]
+    
     createdAt: String!
     updatedAt: String!
   }

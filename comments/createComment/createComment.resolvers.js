@@ -33,7 +33,7 @@ const createCommentResolvers = {
           }
         })
         console.log("createdComment", createdComment)
-        return { ok: true }
+        return { ok: true, commentId: createdComment.id }
       } catch (error) {
         console.log("error:::", error)
         return { ok: false, error: error }

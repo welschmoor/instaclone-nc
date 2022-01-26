@@ -36,12 +36,26 @@ const photosResolvers = {
     },
 
 
-    // how many commens:
-    comments: async (root, args) => {
+    // how many comments:
+    commentsNumber: async (root, args) => {
       return await client.comment.count({
         where: { photoId: root.id }
       })
     },
+
+    // comments: async ({ id }) => {
+    //   return await client.comment.findMany({
+    //     where: { photoId: id },
+    //     include: { user: true }
+    //   })
+    // },
+
+    comments: async ({ id }) => {
+      return await client.photo.findUnique({
+        where: { id: id }
+      }).comments({ include: { user: true } })
+    },
+
 
 
     isMine: async (root, _, context) => {
@@ -70,7 +84,7 @@ const photosResolvers = {
         },
         select: { id: true }
       })
-      
+
       console.log("likeInQ", likeInQ)
 
       if (likeInQ) return true;

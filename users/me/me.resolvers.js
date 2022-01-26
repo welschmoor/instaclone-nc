@@ -9,8 +9,10 @@ const meResolvers = {
       if (currentUser === null || !currentUser) {
         return null
       }
-
-      return currentUser
+      const uniqueUser = await client.user.findUnique({
+        where: { id: currentUser.id }
+      })
+      return uniqueUser
 
     }
   }
