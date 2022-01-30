@@ -5,6 +5,7 @@ const followerUserQueries = gql`
   type FollowUserResult {
     ok: Boolean!
     error: String
+    userFollowId: Int
   }
 
   type Mutation {
