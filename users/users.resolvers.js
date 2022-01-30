@@ -1,14 +1,24 @@
 
 const userResolvers = {
   User: {
-    totalFollowing: ({ id }, args) => {
+    totalPics: async ({ id }) => {
+      const picNum = await client.photo.count({
+        where: {
+          userId: id
+        }
+      })
+      return picNum
+    },
 
+    totalFollowing: ({ id }, args) => {
       return client.user.count({ where: { followers: { some: { id } } } })
     },
+
     totalFollowers: ({ id }, args) => {
       // the followers are people who have the profiles username on their following list
       return client.user.count({ where: { following: { some: { id } } } })
     },
+
     isMe: ({ id }, _, context) => {
       if (context.currentUser === null) {
         return false
@@ -18,6 +28,7 @@ const userResolvers = {
       }
       return false
     },
+
     isFollowing: async ({ id }, _, context) => {
       if (context.currentUser === null || !context.currentUser) {
         return false

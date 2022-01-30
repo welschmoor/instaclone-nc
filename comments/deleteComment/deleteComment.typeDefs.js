@@ -4,6 +4,7 @@ const deleteCommentQuery = gql`
   type deleteCommentResult {
     ok: Boolean!
     error: String
+    id: Int
   }
 
   type Mutation {

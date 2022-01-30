@@ -24,7 +24,7 @@ const deleteCommentResolvers = {
         await client.comment.delete({
           where: { id: id }
         })
-        return { ok: true }
+        return { ok: true, id: id }
       }
 
       return { ok: false, error: "401: You can't delete someone else's comments!" }

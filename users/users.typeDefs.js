@@ -19,6 +19,7 @@ const userQueries = gql`
     photos:    [Photo]
     totalFollowing: Int!
     totalFollowers: Int!
+    totalPics: Int!
     isFollowing: Boolean! #shows if we follow that user
     isMe: Boolean! #shows if profile we are looking at is me
 
