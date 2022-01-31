@@ -4,7 +4,7 @@ const uploadToS3 = require('../../shared/shared.utils.js');
 const uploadPhotoResolvers = {
   Mutation: {
     uploadPhoto: async (_, { file, caption }, { currentUser }) => {
-
+      console.log("file:::", file)
       /* CHECK LOGIN */  if (!currentUser || currentUser === null) {
         return { ok: false, error: "401: not logged in" }
       }
