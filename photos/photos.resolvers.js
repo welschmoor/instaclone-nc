@@ -1,3 +1,4 @@
+const client = require('../client.js')
 
 
 const photosResolvers = {
@@ -58,12 +59,12 @@ const photosResolvers = {
 
 
 
-    isMine: async (root, _, context) => {
+    isMine: async (root, _, { currentUser }) => {
       /* CHECK LOGIN */  if (!currentUser || currentUser === null) {
         return false
       }
 
-      if (context.currentUser.id === root.userId) {
+      if (currentUser.id === root.userId) {
         return true
       }
       return false

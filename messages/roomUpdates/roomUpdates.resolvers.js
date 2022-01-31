@@ -1,6 +1,8 @@
 const { withFilter } = require("graphql-subscriptions")
 const NEW_MESSAGE = require("../../constants")
 const pubsub = require("../../pubsub")
+const client = require('../../client.js')
+
 
 const roomUpdatesResolvers = {
   Subscription: {

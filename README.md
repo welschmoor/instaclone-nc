@@ -7,3 +7,8 @@ DATABASE_URL="postgresql://postgres:<enterpassword>@localhost:5432/instaclone?sc
 PORT=4002
 
 SECRET='x'
+
+## todo
+
+add const to client!!! in client.js
+add const to currentUser in line 43 server

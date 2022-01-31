@@ -1,3 +1,5 @@
+const client = require('../client.js')
+
 
 const userResolvers = {
   User: {

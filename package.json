@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "apollo": "nodemon --exec ./node_modules/.bin/babel-node server --delay 1s",
     "migrate": "npx prisma migrate dev",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "@babel/core": "^7.16.7",
     "@babel/node": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
+    "eslint": "^8.8.0",
     "nodemon": "^2.0.15",
     "prisma": "^3.7.0"
   }
