@@ -11,12 +11,10 @@ const seeFeedResolvers = {
       let cursor = args.cursor
       if (cursor === 0) { cursor = undefined } // this is just for the 1st page
 
-      // you should implement pagination for this!
-      // with OR we see both others and our own pics
+      // this is NOT cursor based pagination, I just didn't feel like changing the variable name in 30 places
       const photos = await client.photo.findMany({
         take: cursor,
         skip: 0,
-
         where: {
           OR: [
             {
@@ -35,7 +33,6 @@ const seeFeedResolvers = {
     }
   }
 }
-
 module.exports = seeFeedResolvers
 
 
