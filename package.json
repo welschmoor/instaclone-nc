@@ -4,9 +4,9 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preapollo": "npx prisma migrate dev",
     "apollo": "nodemon --exec ./node_modules/.bin/babel-node server --delay 1s",
     "migrate": "npx prisma migrate dev",
+    "migratedeploy": "npx prisma migrate deploy",
     "studio": "npx prisma studio",
     "lint": "eslint ."
   },
