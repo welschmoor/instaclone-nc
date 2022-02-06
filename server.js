@@ -50,7 +50,8 @@ async function startServer() {
 
     // None of them work:
     // app.use(express.static('uploads'))
-    app.use('/static', express.static('uploads'))
+    // app.use('/static', express.static('uploads'))
+    app.use(express.static('build'))
     // app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
     app.use(graphqlUploadExpress())
     app.use(logger("tiny"))
