@@ -5,7 +5,7 @@ const searchPhotosResolvers = {
   Query: {
     searchPhotos: async (root, { keyword }) => {
       return await client.photo.findMany({
-        where: { caption: { contains: keyword } }
+        where: { caption: { contains: keyword, mode: 'insensitive' } }
       })
     }
   }
