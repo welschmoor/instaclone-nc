@@ -56,7 +56,7 @@ async function startServer() {
     app.use(graphqlUploadExpress())
     app.use(logger("tiny"))
     server.applyMiddleware({ app })
-    app.get("*", (_, res) =>
+    app.get("*", (_, res) => // this solves the issue of individual routes /profile/test not working after deployment
       res.sendFile(path.resolve("build", "index.html"))
     );
 
