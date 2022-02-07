@@ -57,7 +57,7 @@ async function startServer() {
     app.use(logger("tiny"))
     server.applyMiddleware({ app })
     app.get("*", (_, res) =>
-      res.sendFile(path.resolve("build", "index.html"))
+      res.sendFile(path.resolve("build"))
     );
 
 
