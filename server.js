@@ -56,9 +56,9 @@ async function startServer() {
     app.use(graphqlUploadExpress())
     app.use(logger("tiny"))
     server.applyMiddleware({ app })
-    app.get("*", (_, res) =>
-      res.sendFile(path.resolve("build"))
-    );
+    // app.get("*", (_, res) =>
+    //   res.sendFile(path.resolve("build"))
+    // );
 
 
     const subscriptionServer = SubscriptionServer.create(
