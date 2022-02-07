@@ -9,7 +9,7 @@ const { graphqlUploadExpress } = require("graphql-upload")
 const { typeDefs, resolvers } = require('./schema.js')
 const getUser = require('./users/users.utils.js')
 const logger = require('morgan')
-// const path = require("path");
+const path = require("path");
 const { SubscriptionServer } = require('subscriptions-transport-ws');
 const http = require('http')
 
@@ -51,12 +51,12 @@ async function startServer() {
     // None of them work:
     // app.use(express.static('uploads'))
     // app.use('/static', express.static('uploads'))
-    app.use(express.static('build'))
+    app.use(express.static('build')) // Toggle this to use localhost instead of build folder
     // app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
     app.use(graphqlUploadExpress())
     app.use(logger("tiny"))
     server.applyMiddleware({ app })
-    app.get("*", (_, res) =>
+    app.get("*", (_, res) => // this should solve heroku problem
       res.sendFile(path.resolve("build"))
     );
 
