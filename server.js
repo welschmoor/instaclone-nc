@@ -56,10 +56,9 @@ async function startServer() {
     app.use(graphqlUploadExpress())
     app.use(logger("tiny"))
     server.applyMiddleware({ app })
-    app.get("*", (_, res) => // this should solve heroku problem
-      res.sendFile(path.resolve("build"))
+    app.get("*", (_, res) =>
+      res.sendFile(path.resolve("build", "index.html"))
     );
-
 
     const subscriptionServer = SubscriptionServer.create(
       {
