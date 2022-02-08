@@ -16,7 +16,7 @@ const createAccountResolvers = {
         const hashedPassword = await bcrypt.hash(password, 10)
         // save and return user
         await client.user.create({
-          data: { fullName, firstName, lastName, email, username, password: hashedPassword, avatar: "https://instacloneupload1337.s3.eu-central-1.amazonaws.com/avatars/31-1643216824947-avatarDefault.jpg" }
+          data: { fullName, firstName, lastName, email, username, password: hashedPassword, avatar: "https://instacloneupload1337.s3.eu-central-1.amazonaws.com/avatars/2-1644268789980-avatarDefault2.jpg" }
         })
         return { ok: true }
       } catch (error) {
