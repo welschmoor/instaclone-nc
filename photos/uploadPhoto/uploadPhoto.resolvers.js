@@ -20,7 +20,7 @@ const uploadPhotoResolvers = {
         const photo = await client.photo.create({
           data: {
             file: fileURL,
-            caption: caption,
+            caption: caption || "image description",
             user: {
               connect: {
                 id: currentUser.id,
