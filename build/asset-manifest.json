@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/static/js/main.288ca27e.js",
+    "main.js": "/static/js/main.01eace08.js",
     "index.html": "/index.html",
     "static/media/heartFill.svg": "/static/media/heartFill.8837b42e7e529865b333217565f47c0c.svg",
-    "main.288ca27e.js.map": "/static/js/main.288ca27e.js.map"
+    "main.01eace08.js.map": "/static/js/main.01eace08.js.map"
   },
   "entrypoints": [
-    "static/js/main.288ca27e.js"
+    "static/js/main.01eace08.js"
   ]
 }
