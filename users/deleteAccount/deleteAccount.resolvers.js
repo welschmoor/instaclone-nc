@@ -1,3 +1,4 @@
+// please, don't look at this code, - Johannes
 const client = require('../../client.js')
 
 
@@ -12,11 +13,35 @@ const deleteAccountResolvers = {
         where: { id: id },
       })
 
+      const allUserPicsIDs = await client.photo.findMany({
+        where: {
+          userId: id
+        },
+        select: { id: true }
+      })
+      const picIDarray = allUserPicsIDs.map(e => e.id)
+      console.log("picIDarray", picIDarray, "AAl")
+
       if (currentUser.id === userInQ.id) {
         // delete everything that belongs to user first
-        await client.like.deleteMany({
+        const likeDeleteResult = await client.like.deleteMany({
           where: { userId: id }
         })
+
+        // this probably works with photoId: {in: ...} too!
+        for (const each of allUserPicsIDs) {
+          await client.like.deleteMany({
+            where: { photoId: each.id }
+          })
+        }
+
+        // This is how to delete MANY comments!!! fcking remember it
+        // we pass the array of IDs to delete
+        await client.comment.deleteMany({
+          where: { photoId: { in: picIDarray } }
+        })
+
+
         await client.comment.deleteMany({
           where: { userId: id }
         })
